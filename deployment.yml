@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: star-banking
+spec:
+  replicas: 3  # Initial number of replicas
+  selector:
+    matchLabels:
+      app: star-banking
+  template:
+    metadata:
+      labels:
+        app: star-banking
+    spec:
+      containers:
+      - name: star-banking
+        image: docker.io/<your-dockerhub-username>/star-banking:latest
+        ports:
+        - containerPort: 8081
+        resources:
+          requests:
+            cpu: "250m" 
+          limits:
+            cpu: "500m" 
